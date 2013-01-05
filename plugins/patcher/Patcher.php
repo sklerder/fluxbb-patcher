@@ -173,7 +173,7 @@ class Patcher
 					{
 						if (!isset($requirements['cannot_open']))
 							$requirements['cannot_open'] = array();
-						$requirements['cannot_open'][] = array(false, $curStep['code'], $langPatcher['Cannot open file'].' <a href="'.PLUGIN_URL.'&show_log#a'.$key.'">#'.$key.'</a>');
+						$requirements['cannot_open'][] = array(false, $curStep['code'], $langPatcher['Cannot open file'].' <a href="'.PLUGIN_URL.'&amp;show_log#a'.$key.'">#'.$key.'</a>');
 					}
 					if (isset($curStep['substeps']))
 					{
@@ -184,7 +184,7 @@ class Patcher
 								if (!isset($requirements['missing_strings']))
 									$requirements['missing_strings'] = array();
 
-								$requirements['missing_strings'][] = array(false, $curStep['code'], $langPatcher['Missing string'].' <a href="'.PLUGIN_URL.'&show_log#a'.$id.'">#'.$id.'</a>');
+								$requirements['missing_strings'][] = array(false, $curStep['code'], $langPatcher['Missing string'].' <a href="'.PLUGIN_URL.'&amp;show_log#a'.$id.'">#'.$id.'</a>');
 							}
 						}
 					}

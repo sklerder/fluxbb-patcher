@@ -159,7 +159,7 @@ $modRepo = getModRepo(isset($_GET['check_for_updates']));
 $patcher_version = isset($modRepo['mods']['patcher']['last_release']['version']) ? $modRepo['mods']['patcher']['last_release']['version'] : null;
 
 if (version_compare($patcher_version, Patcher::VERSION, '>'))
-	$notes[] = sprintf($langPatcher['New Patcher version available'], '<a href="'.PLUGIN_URL.'&amp;mod_id=patcher&download_update='.pun_htmlspecialchars($patcher_version).'">'.$langPatcher['Download and install update'].'</a>', $patcher_version, '<a href="'.sprintf(PATCHER_REPO_MOD_URL, 'patcher').'">'.$langPatcher['Resources page'].'</a>');
+	$notes[] = sprintf($langPatcher['New Patcher version available'], '<a href="'.PLUGIN_URL.'&amp;mod_id=patcher&amp;download_update='.pun_htmlspecialchars($patcher_version).'">'.$langPatcher['Download and install update'].'</a>', $patcher_version, '<a href="'.sprintf(PATCHER_REPO_MOD_URL, 'patcher').'">'.$langPatcher['Resources page'].'</a>');
 
 // Check needed directories to be writable
 $dirsNotWritable = array();
@@ -417,7 +417,7 @@ if (isset($modId) && file_exists(MODS_DIR.$modId) || isset($_POST['mods']))
 						{
 							$stepsFailedInfo = array();
 							foreach ($stepsFailed as $key => $s)
-								$stepsFailedInfo[] = '<a href="'.PLUGIN_URL.'&show_log#a'.$s.'">#'.$key.'</a>';
+								$stepsFailedInfo[] = '<a href="'.PLUGIN_URL.'&amp;show_log#a'.$s.'">#'.$key.'</a>';
 							$subMsg[] = sprintf($langPatcher['Num failed'], count($stepsFailed)).': '.implode(', ', $stepsFailedInfo);
 						}
 
@@ -475,8 +475,8 @@ if (isset($modId) && file_exists(MODS_DIR.$modId) || isset($_POST['mods']))
 			} ?>
 							<p>
 								<a href="<?php echo PLUGIN_URL ?>&amp;show_log"><?php echo $langPatcher['Show log'] ?></a> |
-<?php if (!isset($_POST['mods']) && in_array($action, array('install', 'update'))) : ?>								<a href="<?php echo PLUGIN_URL.'&mod_id='.pun_htmlspecialchars($modId) ?>&amp;action=update"><?php echo $langPatcher['Update'] ?></a> | <?php endif; ?>
-<?php if (!isset($_POST['mods']) && $action != 'uninstall') : ?>								<a href="<?php echo PLUGIN_URL.'&mod_id='.pun_htmlspecialchars($modId) ?>&amp;action=uninstall"><?php echo $langPatcher['Uninstall'] ?></a> |  <?php endif; ?>
+<?php if (!isset($_POST['mods']) && in_array($action, array('install', 'update'))) : ?>								<a href="<?php echo PLUGIN_URL.'&amp;mod_id='.pun_htmlspecialchars($modId) .'&amp;action=update">' .$langPatcher['Update'] .'</a>'?> | <?php endif; ?>
+<?php if (!isset($_POST['mods']) && $action != 'uninstall') : ?>								<a href="<?php echo PLUGIN_URL.'&amp;mod_id='.pun_htmlspecialchars($modId) ?>&amp;action=uninstall"><?php echo $langPatcher['Uninstall'] ?></a> |  <?php endif; ?>
 								<a href="<?php echo PLUGIN_URL ?>"><?php echo $langPatcher['Return to mod list'] ?></a>
 							</p>
 						</div>
@@ -502,7 +502,7 @@ if (isset($modId) && file_exists(MODS_DIR.$modId) || isset($_POST['mods']))
 		$info = '<strong>'.pun_htmlspecialchars($mod->title).' v'.pun_htmlspecialchars($mod->version).'</strong>';
 
 		if (isset($mod->repositoryUrl))
-			$info = '<a href="'.$mod->repositoryUrl.'">'.$info.'</a>';;
+			$info = '<a href="'.pun_htmlspecialchars($mod->repositoryUrl).'">'.$info.'</a>';
 
 		if (isset($mod->authorEmail))
 			$info .= ' '.$langPatcher['by'].' <a href="mailto:'.pun_htmlspecialchars($mod->authorEmail).'">'.pun_htmlspecialchars($mod->author).'</a>';
@@ -941,7 +941,7 @@ function toogleAll(form, field)
 				$info = array('<strong>'.pun_htmlspecialchars($curMod->title).'</strong>');
 
 				if (isset($curMod->repositoryUrl))
-					$info[0] = '<a href="'.$curMod->repositoryUrl.'">'.$info[0].'</a>';
+					$info[0] = '<a href="'.pun_htmlspecialchars($curMod->repositoryUrl).'">'.$info[0].'</a>';
 
 				if (isset($curMod->version))
 					$info[] = ' <strong>v'.pun_htmlspecialchars($curMod->version).'</strong>';
@@ -980,7 +980,7 @@ function toogleAll(form, field)
 						if ($section == 'Mods to update')
 						{
 							if ($curMod->canUpdate == 'repo')
-								$actions[0][] = '<a href="'.PLUGIN_URL.'&mod_id='.pun_htmlspecialchars($curMod->id).'&download_update='.pun_htmlspecialchars($curMod->version).'&update">'.$langPatcher['Download and install update'].'</a>';
+								$actions[0][] = '<a href="'.PLUGIN_URL.'&amp;mod_id='.pun_htmlspecialchars($curMod->id).'&amp;download_update='.pun_htmlspecialchars($curMod->version).'&amp;update">'.$langPatcher['Download and install update'].'</a>';
 
 							if ($curMod->canUpdate == 'local')
 								$actions[0]['update'] = $langPatcher['Update'];
@@ -1003,7 +1003,7 @@ function toogleAll(form, field)
 					else
 					{
 						if ($curMod->canUpdate == 'repo')
-							$actions[0][] = '<a href="'.PLUGIN_URL.'&mod_id='.pun_htmlspecialchars($curMod->id).'&download_update='.pun_htmlspecialchars($curMod->updateVersion).'">'.sprintf($langPatcher['Download update'], $curMod->updateVersion).'</a>';
+							$actions[0][] = '<a href="'.PLUGIN_URL.'&amp;mod_id='.pun_htmlspecialchars($curMod->id).'&amp;download_update='.pun_htmlspecialchars($curMod->updateVersion).'">'.sprintf($langPatcher['Download update'], $curMod->updateVersion).'</a>';
 
 						$status = '<strong style="color: red">'.$langPatcher['Not installed'].'</strong>';
 						$actions[1]['install'] = ($curMod->canUpdate == 'repo') ? $langPatcher['Install old version'] : $langPatcher['Install'];

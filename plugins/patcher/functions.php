@@ -486,7 +486,7 @@ function uploadMod()
 
 	$zip->close();
 
-	redirect(PLUGIN_URL.'&mod_id='.$modId, $langPatcher['Modification uploaded redirect']);
+	redirect(PLUGIN_URL.'&amp;mod_id='.$modId, $langPatcher['Modification uploaded redirect']);
 }
 
 /**
@@ -526,7 +526,7 @@ function downloadUpdate($modId, $version)
 
 	$zip->close();
 
-	$redirect_url = (isset($_GET['update'])) ? '&mod_id='.$modId.'&action=update' : '';
+	$redirect_url = (isset($_GET['update'])) ? '&amp;mod_id='.$modId.'&amp;action=update' : '';
 
 	redirect(PLUGIN_URL.$redirect_url, $langPatcher['Modification updated redirect']);
 }
@@ -602,7 +602,7 @@ function downloadMod($modId)
 
 	$zip->close();
 
-	redirect(PLUGIN_URL.'&mod_id='.$modId, $langPatcher['Modification downloaded redirect']);
+	redirect(PLUGIN_URL.'&amp;mod_id='.$modId, $langPatcher['Modification downloaded redirect']);
 }
 
 /**
