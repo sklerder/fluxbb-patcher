@@ -2,7 +2,7 @@ Changelog for FluxBB Patcher
 2.1.0 (sklerder)
 - Some corrections in several files ('&' replaced by '&amp' to be XHTML compliant)
 - Added French translation
-- Modified 'Skip install'	to precisely say that's the database installation which is skipped
+- Modified 'Skip install' to precisely say that's the database installation which is skipped
 - Modified 'Uninstall warning' to advise it should be better to disable the mod instead of uninstall it
 - Modified 'UPLOAD' in Mod.php to accept 'COPY' as keyword
 
