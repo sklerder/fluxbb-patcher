@@ -5,7 +5,6 @@ This script allows you to easily install and uninstall FluxBB modifications.
 1. Upload directories to FluxBB root directory.
 2. Go to Admin Panel and click on Patcher plugin.
 
-[Patcher repository](https://github.com/daris/fluxbb-patcher) | [Patcher topic on FluxBB.org](http://fluxbb.org/forums/viewtopic.php?id=4431)
 
 ## Requirements
 - PHP 5.0 or newer
