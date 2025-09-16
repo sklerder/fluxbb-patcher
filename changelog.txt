@@ -1,4 +1,10 @@
-Changelog for Patcher
+Changelog for FluxBB Patcher
+2.1.0 (sklerder)
+- Some corrections in several files ('&' replaced by '&amp' to be XHTML compliant)
+- Added French translation
+- Modified 'Skip install'	to precisely say that's the database instllation which is skipped
+- Modified 'Uninstall warning' to advise it should be better to disable the mod instead of uninstall it
+- Modified 'UPLOAD' in Mod.php to accept 'COPY' as keyword
 
 2.0-alpha:
 - Automatic readme.txt dependency handling - user shouldn't know what readme.txt file is for
