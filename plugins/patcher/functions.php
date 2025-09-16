@@ -719,7 +719,11 @@ function patcherErrorHandler($errno, $errstr, $errfile, $errline, $errcontext)
 	patcherLog($errno.' '.$errstr.' in '.$errfile.' on line '.$errline);
 
 	ob_start();
-	debug_print_backtrace(defined('DEBUG_BACKTRACE_IGNORE_ARGS') ? DEBUG_BACKTRACE_IGNORE_ARGS : 0);
+	if (version_compare(phpversion(), '5.3.6', '>='))
+		debug_print_backtrace(defined('DEBUG_BACKTRACE_IGNORE_ARGS') ? DEBUG_BACKTRACE_IGNORE_ARGS : 0);
+	else
+		debug_print_backtrace();
+	
 	$contents = ob_get_clean();
 
 	patcherLog($contents."\n----\n");
@@ -747,7 +751,11 @@ function patcherExceptionHandler($exception)
 	patcherLog('Error: '.$exception->getMessage().' on line '.$exception->getFile().', '.$exception->getLine());
 
 	ob_start();
-	debug_print_backtrace(defined('DEBUG_BACKTRACE_IGNORE_ARGS') ? DEBUG_BACKTRACE_IGNORE_ARGS : 0);
+	if (version_compare(phpversion(), '5.3.6', '>='))
+		debug_print_backtrace(defined('DEBUG_BACKTRACE_IGNORE_ARGS') ? DEBUG_BACKTRACE_IGNORE_ARGS : 0);
+	else
+		debug_print_backtrace();
+	
 	$contents = ob_get_clean();
 
 	patcherLog($contents."\n----\n");
