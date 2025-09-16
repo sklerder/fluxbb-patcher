@@ -48,7 +48,7 @@ return array(
 
 'Mod uninstallation'			=> 'Mod uninstallation',
 'Warning'						=> 'Warning',
-'Uninstall warning'				=> 'If you uninstall a mod, any data associated with that mod will be permanently deleted from the database and cannot be restored by re-installing the mod.',
+'Uninstall warning'				=> 'If you uninstall a mod, any data associated with that mod will be permanently deleted from the database and cannot be restored by re-installing the mod. If you want to preserve database, please disable this mod with the Disable link.',
 
 'Unmet requirements'			=> 'Unmet requirements',
 'Check again'					=> 'Check again',
@@ -112,7 +112,7 @@ return array(
 'Download and install'			=> 'Download and install',
 'Download and install update'	=> 'Download and install update',
 'Install old version'			=> 'Install old version',
-'Skip install'					=> 'Skip install (check when you already installed this modification)',
+'Skip install'					=> 'Skip DB install (check when you already installed this modification)',
 
 'Manage backups legend'			=> 'Manage backups',
 'Backup files'					=> 'Backup files',
